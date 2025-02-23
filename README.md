@@ -25,11 +25,6 @@ The physics includes:
 - Viscoelastic rheology (FENE-P model)
 - Channel geometry
 - Log-conformation formulation for numerical stability
-- Second-order central finite-difference scheme
-- RK-3 for time-step integration
-- Adam-Bashforth for conformation tensor evolution
-- WENO-5 for advection terms in conformation tensor evolution equation
-[![](https://img.shields.io/badge/Journal%20of%20Fluid%20Mechanics-10.1017/jfm.2021.789-blue)](https://doi.org/10.1017/jfm.2021.789)
 
 ## Implementation
 
@@ -37,49 +32,27 @@ The physics includes:
 - `01`: 
 
 ### Key Parameters
-- `Bond`: Bond number (ratio of gravitational to surface tension forces)
-- `J`: Dimensionless yield stress
-- `Deb`: Deborah number (ratio of relaxation time to observation time)
-- `B`: Solvent to total viscosity ratio
-- `tmax`: Maximum simulation time
-- `DT_MAX`: Maximum time step
+- `Wi`: Weissenberg number (ratio of elastic to viscous forces)
+
+In this work, we consider Wi = 8 which corresponds to a low-drag reduction regime
 
 ### Numerical Methods
-- Grid: Adaptive mesh refinement with levels from `LEVEL` (8) to `MAXlevel` (11)
-- Time integration: Centered Navier-Stokes solver
-- Interface tracking: Volume-of-Fluid method with tension
-- Error tolerances:
-  - Fraction error (fErr): 1e-3
-  - Curvature error (KErr): 1e-4
-  - Velocity error (VelErr): 1e-2
-  - Vorticity error (OmegaErr): 1e-3
+- Grid: Uniform Cartesian grid
+- Time integration: Third order Runge-Kutta (RK-3)
+- Discretization: Second-order central finite-difference scheme
+- Conformation tensor: Log-conformation formulation for numerical stability
+- Conformation tensor: Adam-Bashforth for conformation tensor evolution
+- Conformation tensor: WENO-5 for advection terms in conformation tensor evolution equation
+
+For more details, please check the foll. articles:
+[![](https://img.shields.io/badge/Journal%20of%20Fluid%20Mechanics-10.1017/jfm.2021.789-blue)](https://doi.org/10.1017/jfm.2021.789)
+[![](https://img.shields.io/badge/Journal%20of%20Fluid%20Mechanics-10.1017/jfm.2018.591-blue)](https://doi.org/10.1017/jfm.2018.591)
 
 ## Getting Started
 
 ### Prerequisites
-- Install the [Basilisk framework](http://basilisk.fr/src/INSTALL)
-- Ensure you have a C compiler with OpenMP support
-- Python 3.x for post-processing
-
-### Initial Configuration
-The simulation requires an initial shape file that defines the bubble geometry:
-- `Bo0.0010.dat`: Initial bubble shape for Bond number 0.001
-- Place this file in the same directory as `burst_evp.c`
-- For details of how this shape is obtained, please refer to repo: [VatsalSy/Bursting-Bubble-In-a-Viscoplastic-Medium](https://github.com/VatsalSy/Bursting-Bubble-In-a-Viscoplastic-Medium). 
-
-### Running Simulations
-
-1. Compile the code with OpenMP support:
-```bash
-# Compile the code
-qcc -O2 -Wall -disable-dimensions -fopenmp burst_evp.c -o burst_evp -lm
-
-# Set the number of OpenMP threads
-export OMP_NUM_THREADS=4
-
-# Run the executable with Plastocapillary (J) and Deborah (Deb) numbers
-./burst_evp 1.0 0.5  # Example: J=1.0, Deb=0.5
-```
+- Install [TensorFlow](https://www.tensorflow.org)
+- Ensure you can run Python 3.x codes and can import tensorflow [Recommended to use GPUs]
 
 ## Outputs
 
@@ -95,14 +68,13 @@ The simulation generates several output files:
 ## Visualization and Post-processing
 
 The repository includes supplementary materials:
-- `02_videos/`: Contains 66 videos showing bubble dynamics
-- `03_supplementary_plots/`: 79 plots analyzing various aspects
-- `04_graphical_abstract/`: Visual summary of key findings
+- `02_weights/`: Contains weights of FCN network models
+- `03_graphical_abstract/`: Visual summary of the work
 
 
 ## Contact
 
 If you need some additional data that might be of interest to you, please don't hesitate to contact us at:\
 ``Arivazhagan G B`` [![](https://img.shields.io/badge/Mail-blue?style=flat&logo=microsoftoutlook&link=mailto:argb@mech.kth.se)](mailto:argb@mech.kth.se) [![](https://img.shields.io/badge/Scholar-4b4b4b?style=flat&logo=googlescholar&link=https://scholar.google.com/citations?user=xyheRZ8AAAAJ&hl=en)](https://scholar.google.com/citations?user=xyheRZ8AAAAJ&hl=en) [![](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&link=https://www.linkedin.com/in/arivazhagan-geetha-balasubramanian-648b8567/)](https://www.linkedin.com/in/arivazhagan-geetha-balasubramanian-648b8567/)\
-``Vatsal Sanjay`` [![](https://img.shields.io/badge/Mail-blue?style=flat&logo=microsoftoutlook&link=mailto:vatsalsanjay@gmail.com)](mailto:vatsalsanjay@gmail.com) [![](https://img.shields.io/badge/Scholar-4b4b4b?style=flat&logo=googlescholar&link=https://scholar.google.com/citations?user=67aQviYAAAAJ&hl=en&oi=ao)](https://scholar.google.com/citations?user=67aQviYAAAAJ&hl=en&oi=ao) [![](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&link=https://www.linkedin.com/in/vatsalsanjay/)](https://www.linkedin.com/in/vatsalsanjay/)\
+``Ricardo Vinuesa`` [![](https://img.shields.io/badge/Mail-blue?style=flat&logo=microsoftoutlook&link=mailto:rvinuesa@mech.kth.se)](mailto:rvinuesa@mech.kth.se) [![](https://img.shields.io/badge/Scholar-4b4b4b?style=flat&logo=googlescholar&link=https://scholar.google.com/citations?user=UbyF8_oAAAAJ&hl=en&oi=ao)](https://scholar.google.com/citations?user=UbyF8_oAAAAJ&hl=en&oi=ao) [![](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&link=https://www.linkedin.com/in/ricardo-vinuesa-91823918/)](https://www.linkedin.com/in/ricardo-vinuesa-91823918/)\
 ``Outi Tammisola`` [![](https://img.shields.io/badge/Mail-blue?style=flat&logo=microsoftoutlook&link=mailto:outi@mech.kth.se)](mailto:outi@mech.kth.se) [![](https://img.shields.io/badge/Scholar-4b4b4b?style=flat&logo=googlescholar&link=https://scholar.google.com/citations?user=XSKb9YAAAAAJ&hl=en&oi=ao)](https://scholar.google.com/citations?user=XSKb9YAAAAAJ&hl=en&oi=ao) [![](https://img.shields.io/badge/LinkedIn-blue?style=flat&logo=linkedin&link=https://www.linkedin.com/in/outi-tammisola-8b2b6511/)](https://www.linkedin.com/in/outi-tammisola-8b2b6511/)
