@@ -28,7 +28,9 @@ The physics includes:
 ## Implementation
 
 ### Key Files
-- `01`: 
+- `01_codes`: Train and Prediction scripts with corresponding tags added to file names. Also, contains the `config` file that outlines the parameter setup required for training/prediction of each case
+- `02_weights`: Contains FCN model's weights for each prediction type at different target wall-normal positions. Contains about 15 hdf5 files amounting to roughly 244 MiB
+- `03_graphical_abstract`: Outlining the visual summary of the work
 
 ### Key Parameters
 - $Wi$: Weissenberg number (ratio of elastic to viscous forces)
@@ -59,18 +61,15 @@ For more details, please check the foll. articles:
 
 ### Output Files
 
-The simulation generates several output files:
-- `intermediate/snapshot-*.dat`: Simulation state at regular intervals
-- `timestep.txt`: Time stepping information
-- `log`: Contains kinetic energy and other diagnostic data
-- `01_pp/png/`: Directory for PNG output files
-- `01_pp/pdf/`: Directory for PDF output files
+The training and prediction script generate each of the below text file, respectively:
+- `train.txt`: Contains model summary and loss incurred at each epoch
+- `predict.txt`: Contains model summary and field sizes of the predictions
 
-## Visualization and Post-processing
-
-The repository includes supplementary materials:
-- `02_weights/`: Contains weights of FCN network models
-- `03_graphical_abstract/`: Visual summary of the work
+Apart from this, the code also creates several hidden folders:
+- `.log`: Contains the model check-points
+- `.epoch_log`: Contains details about the training curves
+- `.saved_model`: Contains the FCN model with weights
+- `.predictions`: Contains the predicted fields stored in `.npz` files
 
 
 ## Contact
