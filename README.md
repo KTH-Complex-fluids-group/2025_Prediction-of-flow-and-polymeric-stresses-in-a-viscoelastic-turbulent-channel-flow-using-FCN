@@ -15,7 +15,6 @@ This work has been published in the xyz. If you use this code, extend it, or dra
 ```
 
 The article can be found at: 
-
 [![](https://img.shields.io/badge/arXiv-4b4b4b?style=flat&logo=arxiv&link=https://arxiv.org/pdf/2404.14121.pdf)](https://arxiv.org/pdf/2404.14121.pdf)
 
 ## Background
@@ -32,9 +31,11 @@ The physics includes:
 - `01`: 
 
 ### Key Parameters
-- `Wi`: Weissenberg number (ratio of elastic to viscous forces)
+- $Wi$: Weissenberg number (ratio of elastic to viscous forces)
+- $Re_b$: Bulk-Reynolds number (ratio of inertial to viscous forces)
+- $Re_\tau$: Friction Reynolds number (with friction velocity scale)
 
-In this work, we consider Wi = 8 which corresponds to a low-drag reduction regime
+In this work, we consider $Wi = 8$ (which corresponds to a low-drag reduction regime) at $Re_b = 2800$ with Newtonian $Re_\tau$ corresponding to 180.
 
 ### Numerical Methods
 - Grid: Uniform Cartesian grid
