@@ -4,7 +4,7 @@ This repository contains the code and supplementary material for the prediction 
 
 ## Publication
 
-This work has been published in the xyz. If you use this code, extend it, or draw inspiration from its contents in your research, please consider citing it as follows:
+This work has been published in the Journal of Fluid Mechanics. If you use the data or code, or draw inspiration from the present work in your research, please consider citing it as follows:
 
 ```bibtex
 @article{balasubramanian2025prediction,
