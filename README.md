@@ -7,14 +7,19 @@ This repository contains the code and supplementary material for the prediction 
 This work has been published in the xyz. If you use this code, extend it, or draw inspiration from its contents in your research, please consider citing it as follows:
 
 ```bibtex
-@article{balasubramanian2024bursting, 
-    title={Bursting bubble in an elastoviscoplastic medium},
-    journal={arXiv Preprint arXiv:2404.14121},
-    year={2024}
+@article{balasubramanian2025prediction,
+  title={Prediction of flow and polymeric stresses in a viscoelastic turbulent channel flow using convolutional neural networks},
+  author={Balasubramanian, Arivazhagan G and Vinuesa, Ricardo and Tammisola, Outi},
+  journal={Journal of Fluid Mechanics},
+  volume={1009},
+  pages={A36},
+  year={2025},
+  publisher={Cambridge University Press}
 }
 ```
 
 The article can be found at: 
+[![](https://img.shields.io/badge/Journal%20of%20Fluid%20Mechanics-10.1017/jfm.2025.240-blue)](https://doi.org/10.1017/jfm.2025.240)
 [![](https://img.shields.io/badge/arXiv-4b4b4b?style=flat&logo=arxiv&link=https://arxiv.org/pdf/2404.14121.pdf)](https://arxiv.org/pdf/2404.14121.pdf)
 
 ## Background
